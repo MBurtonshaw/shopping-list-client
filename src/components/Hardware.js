@@ -22,7 +22,7 @@ export default function Grocery() {
                         </div>
 
                 </div>
-                <div className="accordion px-5" id="accordionExample">
+                <div className="accordion px-5">
                     <div className="accordion-item text-end">
                         <span className="badge bg-primary rounded-pill mx-2">14</span>
                         <h2 className="accordion-header" id="headingOne">

@@ -11,17 +11,17 @@ export default function Add() {
             {/*     Inputs     */}
             <div className='container px-5 mb-3 text-center col-lg-8'>
                 <div className='px-5'>
-                    <div class="mb-3">
+                    <div className="mb-3">
                         <label for="item-name" className="form-label">Item: </label>
                         <input type="email" className="form-control" name="item-name"/>
                     </div>
                     <div className='mb-3'>
-                        <label for="quantity" class="form-label">Quantity: </label>
-                        <input type='text' class="form-control" name="quantity"/>
+                        <label for="quantity" className="form-label">Quantity: </label>
+                        <input type='text' className="form-control" name="quantity"/>
                     </div>
                     <div className='mb-3'>
-                        <label for="quantity" class="form-label">Price: </label>
-                        <input type='text' class="form-control" name="price"/>
+                        <label for="price" className="form-label">Price: </label>
+                        <input type='text' className="form-control" name="price"/>
                     </div>
                 </div>
 
@@ -35,18 +35,18 @@ export default function Add() {
                             <input type="checkbox" className="form-check-input" name="grocery_input"/>
                             <label className="form-check-label" for="grocery_input">Groceries</label>
                         </div>
-                        <div class="form-check col-12 col-md-4">
+                        <div className="form-check col-12 col-md-4">
                             <input type="checkbox" className="form-check-input" name="pet_input"/>
                             <label className="form-check-label" for="pet_input">Pet Store</label>
                         </div>
-                        <div class="form-check col-12 col-md-4">
+                        <div className="form-check col-12 col-md-4">
                             <input type="checkbox" className="form-check-input" id="hardware_input"/>
                             <label className="form-check-label" for="hardware_input">Hardware</label>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
                 {/*     Buttons     */}
             <div className='container text-center pt-3'>
                 <button type="submit" className="btn btn-primary px-4 mx-2">Submit</button>
