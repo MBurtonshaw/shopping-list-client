@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Grocery from './components/Grocery';
+import Pet from './components/Pet';
+import Hardware from './components/Hardware';
+import Add from './components/Add';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Redirect to Grocery */}
+        <Route
+          path="/"
+          element={ <Navigate to="/grocery-store" /> } >
+        </Route>
+        {/* Grocery */}
+        <Route
+          path="/grocery-store"
+          element={ <Grocery /> } >
+        </Route>
+        {/* Pet */}
+        <Route
+          path="/pet-store"
+          element={ <Pet/> } >
+        </Route>
+        {/* Hardware */}
+        <Route
+          path="/hardware-store"
+          element={<Hardware/>}>
+        </Route>
+        <Route
+          path="/add-item"
+          element={<Add/>}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+
+
