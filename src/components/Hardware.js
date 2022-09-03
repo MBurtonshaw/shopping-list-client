@@ -18,13 +18,13 @@ export default function Grocery() {
                     </ul>
 
                     <div className='container text-end p-3'>
-                            <a href='/add-item'><button type="button" class="btn btn-primary px-4">Add to List</button></a>
+                            <a href='/add-item'><button type="button" class="btn btn-warning px-4">Add to List</button></a>
                         </div>
 
                 </div>
                 <div className="accordion px-5">
                     <div className="accordion-item text-end">
-                        <span className="badge bg-primary rounded-pill mx-2">14</span>
+                        <span className="badge text-bg-warning rounded-pill mx-2">14</span>
                         <h2 className="accordion-header" id="headingOne">
                             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Accordion Item #1
@@ -39,7 +39,7 @@ export default function Grocery() {
                     </div>
 
                     <div className="accordion-item text-end">
-                        <span className="badge bg-primary rounded-pill mx-2">2</span>
+                        <span className="badge text-bg-warning rounded-pill mx-2">2</span>
                         <h2 className="accordion-header" id="headingTwo">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Accordion Item #2
@@ -54,7 +54,7 @@ export default function Grocery() {
                     </div>
 
                     <div className="accordion-item text-end">
-                        <span className="badge bg-primary rounded-pill mx-2">1</span>
+                        <span className="badge text-bg-warning rounded-pill mx-2">1</span>
                         <h2 className="accordion-header" id="headingThree">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Accordion Item #3

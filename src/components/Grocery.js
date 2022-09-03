@@ -20,9 +20,12 @@ export default function Grocery() {
     
     if (list && list.length > 0) {
         const List = list;
-        console.log(List[0].category)
-    return( 
+        
+        return( 
             <div className='container px-5'>
+                
+            {/* //////////////////Navbar/////////////////////// */}
+
                 <h1 className='display-4 pt-2 pb-5'>The List</h1>
                 <div className='container-fluid'>
                     <ul className="nav nav-tabs">
@@ -40,70 +43,95 @@ export default function Grocery() {
                     <div className='container text-end p-3'>
                             <a href='/add-item'><button type="button" className="btn btn-primary px-4">Add to List</button></a>
                         </div>
-                </div>
-                {/* //////////////////////////////////////////////////////////////////////////// */}
-                <div className="accordion px-5" id="accordionExample">
-                    <div className="accordion-item text-end">
-                        <span className="badge bg-primary rounded-pill mx-2">14</span>
-                        <h2 className="accordion-header" id="headingOne">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            {List[0].item}
-                            </button>
-                        </h2>
-                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div className="accordion-body text-start">
-                                <p className=''>Price: {List[0].price}</p>
-                                <p className=''>Category: {List[0].category}</p>
-                            </div>
-                        </div>
                     </div>
-
-                    <div className="accordion-item text-end">
-                        <span className="badge bg-primary rounded-pill mx-2">2</span>
-                        <h2 className="accordion-header" id="headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div className="accordion-body text-start">
-                                <p className=''>Price: </p>
-                                <p className=''>Category: </p>
-                            </div>
-                        </div>
-                    </div>
-
+                
                    
+                {
+                list.map( ( item, index ) => {
+                    if (index === 0) {
 
+                        {/* //////////////////Accordion 1/////////////////////// */}
+
+                        return(
+                            <div key={index} className="accordion px-5" id="accordionExample">
+                                <div className="accordion-item text-end">
+                                    <span className="badge bg-primary rounded-pill mx-2">{item.quantity}</span>
+                                    <h2 className="accordion-header" id="headingOne">
+                                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        {item.item}
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" className="accordion-collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body text-start">
+                                            <p className=''>Price: {item.price}</p>
+                                            <p className=''>Category: {item.category}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            );
+                    } else {
+
+                        {/* //////////////////Remaining Accordions/////////////////////// */}
+                        
+                        return(
+                            <div key={index} className='accordion px-5'>
+                                <div className="accordion-item text-end">
+                                    <span className="badge bg-primary rounded-pill mx-2">{item.quantity}</span>
+                                    <h2 className="accordion-header" id="headingTwo">
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse` + index} aria-expanded="false" aria-controls="collapseTwo">
+                                        {item.item}
+                                        </button>
+                                    </h2>
+                                    <div id={`collapse` + index} className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body text-start">
+                                            <p className=''>Price: {item.price}</p>
+                                            <p className=''>Category: {item.category}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                })
+            }
                 </div>
-            </div>
-    )
-    } else {
-        return(
-            <div className='container px-5'>
-            <h1 className='display-4 pt-2 pb-5'>The List</h1>
-            <div className='container-fluid'>
-                <ul className="nav nav-tabs">
-                    <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="/">Grocery Store</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/pet-store">Pet Store</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/hardware-store">Hardware Store</a>
-                    </li>
-                </ul>
+        )} else {
 
-                <h2 className=' display-5 text-center'>loading...</h2>
-
-                <div className='container text-end p-3'>
-                        <a href='/add-item'><button type="button" className="btn btn-primary px-4">Add to List</button></a>
+            {/* //////////////////Loading Screen/////////////////////// */}
+            
+            return(
+                <div className='container px-5'>
+                <h1 className='display-4 pt-2 pb-5'>The List</h1>
+                <div className='container-fluid'>
+                    <ul className="nav nav-tabs">
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="/">Grocery Store</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/pet-store">Pet Store</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/hardware-store">Hardware Store</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <h1 className='display-5 p-5 text-center'>Loading...</h1>
                     </div>
-            </div>
-            </div>
+                    <div className='container text-end p-3'>
+                            <a href='/add-item'><button type="button" className="btn btn-primary px-4">Add to List</button></a>
+                        </div>
+                    </div>
+                </div>
             );
-    }
+        }
 }
         
+                    
+                
+                
+        
+                    
+
         
