@@ -11,11 +11,7 @@ export default function Grocery() {
         try {
             await axios.get( `http://localhost:5000/grocery-store` ).then(
                 response => {
-                    for (let i = 0; i < 1; i++) {
-                        if (response.data.list[i].is_grocery === true) {
-                            setList(response.data.list[i]);
-                        }
-                    }
+                    setList(response.data.list);
                 }
             )} catch( error ) {
             //If there are errors, they are set to state to be displayed later in ServerError Display
@@ -25,26 +21,42 @@ export default function Grocery() {
     useEffect( () => { get_em() }, [ setList ] );
 
     function fill_in() {
-        let List = [list];
-      
-        for (let i = 0; i < List.length; i++) {
+        if (list.length > 0) {
             return(
-                <div key={i} className="accordion px-5" id="accordionExample">
-                    <div className="accordion-item text-end">
-                        <span className="badge bg-primary rounded-pill mx-2">{List[i].quantity}</span>
-                        <h2 className="accordion-header" id="headingOne">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            {List[i].name}
-                            </button>
-                        </h2>
-                        <div id="collapseOne" className="accordion-collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div className="accordion-body text-start">
-                                <p className=''>Price: {List[i].price}</p>
+                list.map( (item, index) => 
+               {
+                if (item.is_grocery === true) {
+                    return(
+                        <div key={index} className="accordion px-5" id="accordionExample">
+                            <div className="accordion-item text-end">
+                                <span className="badge bg-primary rounded-pill mx-2">{item.quantity}</span>
+                                <h2 className="accordion-header" id="headingOne">
+                                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        {item.name}
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" className="accordion-collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div className="accordion-body text-start">
+                                        <p>Price: {item.price}</p>
+                                        <div className='row'>
+                                            <p className='col-6'>Quantity: {item.quantity}</p>
+                                            <div className='container text-end col-6'>
+                                                <span className='px-2'><a href={ '/edit/' + item.id }>Edit</a></span>
+                                                <span className='px-1'><a href={ '/delete/' + item.id }>Delete</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                );
+                        </div>);
+                    } 
+            }
+                )
+            );
+        } else {
+            return(
+                <div><h1 className='display-6 text-center py-5'>No results were found</h1></div>
+            );
         }
     }
     

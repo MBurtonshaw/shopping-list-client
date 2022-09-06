@@ -4,6 +4,8 @@ import Grocery from './components/Grocery';
 import Pet from './components/Pet';
 import Hardware from './components/Hardware';
 import Add from './components/Add';
+import Edit from './components/Edit';
+import Delete from './components/Delete';
 
 function App() {
 
@@ -33,6 +35,14 @@ function App() {
         <Route
           path="/add-item"
           element={<Add/>}>
+        </Route>
+        <Route
+          path="/edit/:id"
+          element={<Edit/>}>
+        </Route>
+        <Route
+          path="/delete/:id"
+          element={<Delete/>}>
         </Route>
       </Routes>
     </BrowserRouter>

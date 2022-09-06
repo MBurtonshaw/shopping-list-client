@@ -1,10 +1,15 @@
 import { React } from 'react';
+import { useParams } from 'react-router-dom';
 
-export default function Add() {
+export default function Edit() {
+
+    let id = useParams();
+    console.log(id.id);
+
     return(
         <div className='container mx-5 px-5'>
             <div className='text-center container'>
-                <h1 className='display-4 mb-5'>Add to a List</h1>
+                <h1 className='display-4 mb-5'>Edit a list item</h1>
             </div>
             <form>
                     
@@ -12,15 +17,15 @@ export default function Add() {
             <div className='container px-5 mb-3 text-center col-lg-8'>
                 <div className='px-5'>
                     <div className="mb-3">
-                        <label for="item-name" className="form-label">Item: </label>
+                        <label htmlFor="item-name" className="form-label">Item: </label>
                         <input type="email" className="form-control" name="item-name"/>
                     </div>
                     <div className='mb-3'>
-                        <label for="quantity" className="form-label">Quantity: </label>
+                        <label htmlFor="quantity" className="form-label">Quantity: </label>
                         <input type='text' className="form-control" name="quantity"/>
                     </div>
                     <div className='mb-3'>
-                        <label for="price" className="form-label">Price: </label>
+                        <label htmlFor="price" className="form-label">Price: </label>
                         <input type='text' className="form-control" name="price"/>
                     </div>
                 </div>
